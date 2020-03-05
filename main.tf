@@ -18,15 +18,15 @@ provider "aws" {
 
 
 # Call the seed_module to build our ADO seed info
-module "bootstrap" {
-  source                      = "./modules/bootstrap"
-  name_of_s3_bucket           = "wills-github-actions-demo-terraform-tfstate"
-  dynamo_db_table_name        = "aws-locks"
-  iam_user_name               = "GitHubActionsIamUser"
-  ado_iam_role_name           = "GitHubActionsIamRole"
-  aws_iam_policy_permits_name = "GitHubActionsIamPolicyPermits"
-  aws_iam_policy_assume_name  = "GitHubActionsIamPolicyAssume"
-}
+#module "bootstrap" {
+#  source                      = "./modules/bootstrap"
+#  name_of_s3_bucket           = "wills-github-actions-demo-terraform-tfstate"
+#  dynamo_db_table_name        = "aws-locks"
+#  iam_user_name               = "GitHubActionsIamUser"
+#  ado_iam_role_name           = "GitHubActionsIamRole"
+#  aws_iam_policy_permits_name = "GitHubActionsIamPolicyPermits"
+#  aws_iam_policy_assume_name  = "GitHubActionsIamPolicyAssume"
+#}
 # Build the VPC
 resource "aws_vpc" "vpc" {
   cidr_block           = "10.1.0.0/16"
