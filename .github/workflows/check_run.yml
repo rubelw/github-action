@@ -66,9 +66,6 @@ jobs:
           tf_actions_comment: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  automerge:
-    runs-on: ubuntu-latest
-    steps:
       - name: automerge
         uses: "rubelw/automerge-action@ccae530ae13b6af67a7a2009c266fe925844e658"
         env:
