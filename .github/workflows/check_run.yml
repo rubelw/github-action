@@ -66,10 +66,6 @@ jobs:
           tf_actions_comment: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: When tests pass, merge and cleanup
-        uses: rubelw/auto_merge_my_pull_requests@development
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   automerge:
     runs-on: ubuntu-latest
     steps:
