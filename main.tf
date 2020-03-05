@@ -1,5 +1,5 @@
 provider "aws" {
-  region                  = "${var.aws_region}"
+  region = var.aws_region
 }
 
 resource "aws_s3_bucket" "tfbucket" {
@@ -7,7 +7,7 @@ resource "aws_s3_bucket" "tfbucket" {
   acl           = "private"
   force_destroy = true
 
-  tags {
+  tags = {
     Name        = "My bucket"
     Environment = "Dev"
   }
