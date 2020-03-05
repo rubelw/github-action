@@ -1,14 +1,15 @@
-# Configure the Docker provider
-provider "docker" {
-  host = "tcp://0.0.0.0:2376/"
+provider "aws" {
+  region                  = "${var.aws_region}"
 }
 
-# Create a container
-resource "docker_container" "foo" {
-  image = "${docker_image.ubuntu.latest}"
-  name  = "foo"
+resource "aws_s3_bucket" "tfbucket" {
+  bucket        = "wills-github-actions"
+  acl           = "private"
+  force_destroy = true
+
+  tags {
+    Name        = "My bucket"
+    Environment = "Dev"
+  }
 }
 
-resource "docker_image" "ubuntu" {
-  name = "ubuntu:latest"
-}
