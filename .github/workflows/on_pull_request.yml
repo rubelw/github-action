@@ -25,12 +25,14 @@ jobs:
       - name: 'Checkout'
         uses: actions/checkout@master
       - name: Configure AWS Credentials
+        if: success()
         uses: aws-actions/configure-aws-credentials@v1
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-west-2        
       - name: 'Terraform Format'
+        if: success()
         uses: hashicorp/terraform-github-actions@master
         with:
           tf_actions_version: ${{ env.tf_version }}
@@ -40,6 +42,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Terraform Init'
+        if: success()
         uses: hashicorp/terraform-github-actions@master
         with:
           tf_actions_version: ${{ env.tf_version }}
@@ -49,6 +52,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Terraform Validate'
+        if: success()
         uses: hashicorp/terraform-github-actions@master
         with:
           tf_actions_version: ${{ env.tf_version }}
