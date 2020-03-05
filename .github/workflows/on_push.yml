@@ -1,19 +1,6 @@
 name: 'Terraform GitHub Actions'
 on:
-  pull_request:
-    types:
-      - labeled
-      - unlabeled
-      - synchronize
-      - opened
-      - edited
-      - ready_for_review
-      - reopened
-      - unlocked
-  pull_request_review:
-    types:
-      - submitted
-  status: {}
+  push
 env:
   tf_version: 'latest'
   tf_working_dir: '.'
@@ -71,8 +58,3 @@ jobs:
           tf_actions_comment: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: automerge
-        if: success()
-        uses: "rubelw/automerge-action@ccae530ae13b6af67a7a2009c266fe925844e658"
-        env:
-          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"          
